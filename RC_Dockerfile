@@ -1,0 +1,11 @@
+FROM cimg/go:1.20.8-node
+
+WORKDIR /recommendation
+
+COPY ./recommendation /recommendation
+
+RUN go build -o app
+
+EXPOSE 8080
+
+CMD ["./app"]
