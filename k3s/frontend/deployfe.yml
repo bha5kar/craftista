@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: fe
-        image: 8ha5kar/craftista-fe:latest
+        image: 8ha5kar/frontend:latest
         ports:
         - containerPort: 3000
 

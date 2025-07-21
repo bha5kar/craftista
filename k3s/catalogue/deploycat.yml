@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: cat
-        image: 8ha5kar/craftista-ct:latest
+        image: 8ha5kar/catalogue:latest
         ports:
         - containerPort: 5000
 

@@ -78,12 +78,14 @@ jobs:
           
         run: |
           NEW_TAG=${{ github.sha }}
+          pwd
+          ls -lrt
           sed -i "s|image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.service }}:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.service }}:$NEW_TAG|" k3s/${{ matrix.service }}/deploy*.yml
 
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add k3s/${{ matrix.service }}/deploy*.yml
           git commit -m "Update ${{ matrix.service }} image to $NEW_TAG [skip ci]"
-          git push
+          git push -u origin main
 
         
