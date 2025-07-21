@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: cat
-        image: 8ha5kar/catalogue:latest
+        image: 8ha5kar/catalogue:55b8343049c960eecbeaf9e4eb493a5762c51067
         ports:
         - containerPort: 5000
 
