@@ -20,6 +20,7 @@ jobs:
           unzip sonar-scanner.zip
           mv sonar-scanner-* sonar-scanner
           echo "$(pwd)/sonar-scanner/bin" >> $GITHUB_PATH
+          pwd
 
       - name: Scan Catalogue
         working-directory: catalogue
