@@ -75,15 +75,15 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.service }}:${{ github.sha }}
 
       - name: Update image tag in manifest
-        env:
-          NEW_TAG=${{ github.sha }}
+          
         run: |
-          sed -i "s|image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.service }}:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.service }}:${NEW_TAG}|" k3s/${{ matrix.service }}/deploy*.yml
+          NEW_TAG=${{ github.sha }}
+          sed -i "s|image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.service }}:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.service }}:$NEW_TAG|" k3s/${{ matrix.service }}/deploy*.yml
 
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add k3s/${{ matrix.service }}/deploy*.yml
-          git commit -m "Update ${{ matrix.service }} image to ${{ NEW_TAG }} [skip ci]"
+          git commit -m "Update ${{ matrix.service }} image to $NEW_TAG [skip ci]"
           git push
 
         
