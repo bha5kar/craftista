@@ -25,7 +25,7 @@ jobs:
         working-directory: catalogue
         run: sonar-scanner \
           -Dsonar.projectKey=catalogue \
-          -Dsonar.sources=. \
+          -Dsonar.sources=/home/bha5kar/workspace/actions-runner/_work/craftista/craftista/catalogue \
           -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
@@ -33,7 +33,7 @@ jobs:
         working-directory: frontend
         run: sonar-scanner \
           -Dsonar.projectKey=frontend \
-          -Dsonar.sources=. \
+          -Dsonar.sources=/home/bha5kar/workspace/actions-runner/_work/craftista/craftista/frontend \
           -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
