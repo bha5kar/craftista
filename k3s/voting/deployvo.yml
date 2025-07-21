@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: vo
-        image: 8ha5kar/voting:latest
+        image: 8ha5kar/voting:40b900cdd6a0faffbb485f650314922be76801be
         ports:
         - containerPort: 8080
 
