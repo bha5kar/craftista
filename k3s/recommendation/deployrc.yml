@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: rc
-        image: 8ha5kar/recommendation:latest
+        image: 8ha5kar/recommendation:40b900cdd6a0faffbb485f650314922be76801be
         ports:
         - containerPort: 8080
 
