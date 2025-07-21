@@ -9,6 +9,9 @@ on:
 jobs:
   checkchange:
     runs-on: self-hosted
+    strategy:
+      matrix:
+        service: [catalogue,frontend,reccomendation,voting]
     steps:
       
       - name: checkout repo
@@ -22,21 +25,21 @@ jobs:
           echo "$(pwd)/sonar-scanner/bin" >> $GITHUB_PATH
           pwd
 
-      - name: Scan Catalogue
-        working-directory: catalogue
+      - name: Scan ${{ matrix.service }}
+        working-directory: ${{ matrix.service }}
         run: |
           sonar-scanner \
-          -Dsonar.projectKey=catalogue \
-          -Dsonar.sources=/home/bha5kar/workspace/actions-runner/_work/craftista/craftista/catalogue \
+          -Dsonar.projectKey=${{ matrix.service }} \
+          -Dsonar.sources=/home/bha5kar/workspace/actions-runner/_work/craftista/craftista/${{ matrix.service }} \
           -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
-      - name: Scan Frontend
-        working-directory: frontend
-        run: |
-          sonar-scanner \
-          -Dsonar.projectKey=frontend \
-          -Dsonar.sources=/home/bha5kar/workspace/actions-runner/_work/craftista/craftista/frontend \
-          -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+      # - name: Scan Frontend
+      #   working-directory: frontend
+      #   run: |
+      #     sonar-scanner \
+      #     -Dsonar.projectKey=frontend \
+      #     -Dsonar.sources=/home/bha5kar/workspace/actions-runner/_work/craftista/craftista/frontend \
+      #     -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+      #     -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
