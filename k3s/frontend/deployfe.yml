@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: fe
-        image: 8ha5kar/frontend:latest
+        image: 8ha5kar/frontend:40b900cdd6a0faffbb485f650314922be76801be
         ports:
         - containerPort: 3000
 
