@@ -2,7 +2,7 @@ FROM python:3.9.23-slim
 
 WORKDIR /catalogue
 
-COPY ./catalogue /catalogue
+COPY . /catalogue
 
 RUN pip install -r requirements.txt
 

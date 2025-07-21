@@ -2,7 +2,7 @@ FROM maven:3.9.10-eclipse-temurin-17-alpine AS build
 
 WORKDIR /voting
 
-COPY ./voting /voting
+COPY . /voting
 
 #RUN mvn dependency:go-offline
 

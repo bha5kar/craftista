@@ -2,7 +2,7 @@ FROM node:22-alpine3.22
 
 WORKDIR /frontend
 
-COPY ./frontend /frontend
+COPY . /frontend
 
 RUN npm install
 
