@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: craftista
+  name: craftista-vo
+  labels:
+    app: craftista-vo
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: craftista-vo
+
+  template:
+    metadata:
+      labels:
+        app: craftista-vo
+    spec:
+      containers:
+      - name: vo
+        image: 8ha5kar/craftista-vo:latest
+        ports:
+        - containerPort: 8080
+
+        

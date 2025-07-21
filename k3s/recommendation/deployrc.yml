@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: craftista
+  name: craftista-rc
+  labels:
+    app: craftista-rc
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: craftista-rc
+
+  template:
+    metadata:
+      labels:
+        app: craftista-rc
+    spec:
+      containers:
+      - name: rc
+        image: 8ha5kar/craftista-rc:latest
+        ports:
+        - containerPort: 8080
+
+        

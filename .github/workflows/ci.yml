@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'k3s/**'
   
   workflow_dispatch:
 
@@ -42,7 +44,7 @@ jobs:
   #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   #         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-  build-image-scan:
+  buildpush-image:
     #needs: SonarQube
     runs-on: ubuntu-latest
     strategy:
