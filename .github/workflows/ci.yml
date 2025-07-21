@@ -32,14 +32,11 @@ jobs:
           -Dsonar.projectKey=${{ matrix.service }} \
           -Dsonar.sources=/home/bha5kar/workspace/actions-runner/_work/craftista/craftista/${{ matrix.service }} \
           -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
-      # - name: Scan Frontend
-      #   working-directory: frontend
-      #   run: |
-      #     sonar-scanner \
-      #     -Dsonar.projectKey=frontend \
-      #     -Dsonar.sources=/home/bha5kar/workspace/actions-runner/_work/craftista/craftista/frontend \
-      #     -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-      #     -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+      - name: Quality Gate Check
+        uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
