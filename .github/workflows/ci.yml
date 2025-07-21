@@ -80,6 +80,7 @@ jobs:
           NEW_TAG=${{ github.sha }}
           pwd
           ls -lrt
+          git pull
           sed -i "s|image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.service }}:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.service }}:$NEW_TAG|" k3s/${{ matrix.service }}/deploy*.yml
 
           git config user.name "GitHub Actions"
