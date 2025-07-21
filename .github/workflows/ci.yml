@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: scan for ${{ matrix.service }}
-        working_directory: ${{ matrix.service }}
+        working-directory: ${{ matrix.service }}
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
