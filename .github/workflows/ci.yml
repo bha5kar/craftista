@@ -9,14 +9,17 @@ on:
 jobs:
   checkchange:
     runs-on: self-hosted
+    strategy:
+      matrix:
+        service: [catalogue, frontend, recommendation, voting]
     steps:
       
       - name: checkout repo
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       
-      - uses: SonarSource/sonarqube-scan-action@v5
+      - name: scan for ${{ matrix.service }}
+        working_directory: ${{ matrix.service }}
+        uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
