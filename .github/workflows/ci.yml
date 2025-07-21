@@ -9,9 +9,6 @@ on:
 jobs:
   checkchange:
     runs-on: self-hosted
-    strategy:
-      matrix:
-        service: [catalogue, frontend, recommendation, voting]
     steps:
       
       - name: checkout repo
