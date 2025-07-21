@@ -1,4 +1,4 @@
-FROM cimg/go:1.20.8-node
+FROM golang:1.20-alpine
 
 WORKDIR /recommendation
 

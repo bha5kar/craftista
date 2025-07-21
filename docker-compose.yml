@@ -1,0 +1,38 @@
+
+
+services:
+  recco:
+    image: 8ha5kar/craftista-rc:latest
+    container_name: recco
+    ports:
+      - "8080:8080"
+    networks:
+      - craftista-net
+
+  frontend:
+    image: 8ha5kar/craftista-fe:latest
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - craftista-net
+  
+  voting:
+    image: 8ha5kar/craftista-vo:latest
+    container_name: voting
+    ports:
+      - "8081:8080"
+    networks:
+      - craftista-net
+
+  catalogue:
+    image: 8ha5kar/craftista-ct:latest
+    ports:
+      - "5000:5000"
+    networks:
+      - craftista-net
+
+
+networks:
+  craftista-net:
+    driver: bridge
